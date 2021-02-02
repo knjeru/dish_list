@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  client_dish_list:
+    container_name: client_dish_list
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - './client:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
